@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:alpine3.20
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: "trabalho_banco"
+      POSTGRES_USER: "dev"
+      POSTGRES_PASSWORD: "1234"
+    ports:
+      - 5432:5432
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  mongodb:
+    image: mongo:latest
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=dev
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+    ports:
+      - 10001:27017
+    extra_hosts:
+      - "hos.docker.internal:host-gateway"
