@@ -14,21 +14,15 @@ public class PedidoEntity {
 
     private float peso;
 
-    private float tamanho;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private ClienteEntity cliente;
 
-    private long idCliente;
-
-    private long idEntregador;
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    private FuncionarioEntity funcionario;
 
     public PedidoEntity() {
-    }
-
-    public PedidoEntity(String descricao, float peso, float tamanho, long idCliente, long idEntregador) {
-        this.descricao = descricao;
-        this.peso = peso;
-        this.tamanho = tamanho;
-        this.idCliente = idCliente;
-        this.idEntregador = idEntregador;
     }
 
     public long getId() {
@@ -55,27 +49,19 @@ public class PedidoEntity {
         this.peso = peso;
     }
 
-    public float getTamanho() {
-        return tamanho;
+    public ClienteEntity getCliente() {
+        return cliente;
     }
 
-    public void setTamanho(float tamanho) {
-        this.tamanho = tamanho;
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }
 
-    public long getIdCliente() {
-        return idCliente;
+    public FuncionarioEntity getFuncionario() {
+        return funcionario;
     }
 
-    public void setIdCliente(long idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public long getIdEntregador() {
-        return idEntregador;
-    }
-
-    public void setIdEntregador(long idEntregador) {
-        this.idEntregador = idEntregador;
+    public void setFuncionario(FuncionarioEntity funcionario) {
+        this.funcionario = funcionario;
     }
 }
